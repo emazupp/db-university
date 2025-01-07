@@ -76,7 +76,9 @@
 10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
 
 ```sql
-
+    UPDATE `teachers`
+    SET `office_numbers` = 126
+    WHERE `name` LIKE "Pietro" AND `surname` LIKE "Rizzo";
 ```
 
 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
