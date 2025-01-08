@@ -80,7 +80,7 @@
     SELECT
 	`teachers`.`name`,
 	`teachers`.`surname`,
-    `departments`.`name`
+    `departments`.`name` AS `nome_dipartimento`
 
     FROM `teachers`
 
@@ -102,3 +102,17 @@
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
    per ogni esame, stampando anche il voto massimo. Successivamente,
    filtrare i tentativi con voto minimo 18.
+
+```sql
+    SELECT
+	COUNT(`exam_student`.`student_id`) AS `numero_tentativi`,
+    MAX(`exam_student`.`vote`) AS `voto_massimo`
+
+    FROM `exam_student`
+
+    INNER JOIN `students`
+    ON `students`.`id` = `exam_student`.`student_id`
+
+    WHERE `exam_student`.`vote` >= 18
+    GROUP BY `exam_student`.`student_id`;
+```
